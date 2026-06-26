@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>happy birthday kiki ♡</title>
+  <meta
+    name="description"
+    content="a soft dramatic birthday website for kiki"
+  />
+  <link rel="preconnect" href="[fonts.googleapis.com](https://fonts.googleapis.com)" />
+  <link rel="preconnect" href="[fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin />
+  <link
+    href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap)"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="loader" class="loader">
+    <div class="loader-inner">
+      <div class="loader-heart">♡</div>
+      <p class="loader-text">loading something only for my kiki...</p>
+      <div class="loader-bar">
+        <div class="loader-progress" id="loaderProgress"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="introGate" class="intro-gate">
+    <div class="intro-card glass">
+      <p class="intro-kicker">before you enter...</p>
+      <h1 class="intro-title">birthday girl, got password hor ♡</h1>
+      <p class="intro-copy">
+        this page was made with all the love i can give for kiki
+      </p>
+
+      <div class="intro-input-row">
+        <input
+          id="passInput"
+          type="password"
+          placeholder="enter ur second name NOWWWW"
+          autocomplete="off"
+        />
+        <button id="enterBtn" class="pill-btn yes-btn">enter</button>
+      </div>
+
+      <p class="intro-hint">hint: 🥭</p>
+      <p id="introError" class="intro-error hidden">nopeee that's not it baby</p>
+    </div>
+  </div>
+
+  <div class="cursor-hearts" id="cursorHearts"></div>
+
+  <div class="bg-scene">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="grid-glow"></div>
+    <div class="stars" id="stars"></div>
+    <div class="floating-hearts" id="floatingHearts"></div>
+  </div>
+
+  <main class="site-shell hidden-site" id="siteShell">
+    <section class="hero-card glass">
+      <div class="hero-topline">
+        <div class="hero-badge">for my baby, my pretty girl, my kiki</div>
+        <button class="ghost-chip" id="secretLetterChip">open secret letter hehe</button>
+      </div>
+
+      <h1 id="mainTitle">happy birthday<br />kiki ♡</h1>
+
+      <p class="hero-copy">
+        today is all yours. your smile, your laugh, your face, your little ways,
+        your energy, your everything. you make life prettier without even trying.
+        this is my online love letter for you hehe
+      </p>
+
+      <div class="hero-actions" id="heroActions">
+        <button class="pill-btn yes-btn" id="yesBtn">yes, this is adorable</button>
+        <button class="pill-btn no-btn" id="noBtn">no bru</button>
+      </div>
+
+      <div class="yes-reveal hidden" id="yesReveal">
+        <p class="yes-title">exactlyyyy</p>
+        <p class="yes-copy">
+          happy birthday to the cutest girl ever. i love you with all my heart kiki ♡
+        </p>
+      </div>
+
+      <div class="song-panel">
+        <div class="song-top">
+          <div class="song-meta">
+            <img src="images/cover.jpg" alt="song cover" class="song-cover" />
+            <div>
+              <p class="song-kicker">a song we both like and reminds me of u</p>
+              <h2>something about youuuu</h2>
+            </div>
+          </div>
+          <div class="now-playing">only kiki alloweds✦</div>
+        </div>
+
+        <div class="player-controls">
+          <button class="soft-btn" id="playBtn">play</button>
+          <button class="soft-btn" id="pauseBtn">pause</button>
+          <button class="soft-btn" id="restartBtn">restart</button>
+          <button class="soft-btn" id="letterBtn">love letter hehe</button>
+        </div>
+
+        <div class="progress-shell">
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+        </div>
+
+        <audio id="song" loop>
+          <source src="music/something-about-you.mp3" type="audio/mpeg" />
+        </audio>
+
+        <div class="lyric-box">
+          <p class="lyric-main" id="lyricMain">she look just like a dream</p>
+          <p class="lyric-sub" id="lyricSub">hehe it already says so much about you</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="carousel-card glass">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">memory lane but cuter</p>
+          <h2>our prettiest moments</h2>
+        </div>
+        <div class="section-pill">swipe me on mobile</div>
+      </div>
+
+      <p class="section-copy">
+        time to reminisce
+      </p>
+
+      <div class="carousel-wrap" id="carouselWrap">
+        <button class="carousel-nav" id="prevSlide" aria-label="previous photo">‹</button>
+
+        <div class="carousel-track-wrap">
+          <div class="carousel-track" id="carouselTrack">
+            <article class="slide">
+              <img src="images/photo1.jpg" alt="memory 1" />
+              <p>gbtb!! cute ahh dimples n face that id alw wna kiss</p>
+            </article>
+
+            <article class="slide">
+              <img src="images/photo2.jpg" alt="memory 2" />
+              <p>my grad! proof you make everything sm better</p>
+            </article>
+
+            <article class="slide">
+              <img src="images/photo3.jpg" alt="memory 3" />
+              <p>sleepy ahh hehe.. my favorite girl that id choose always</p>
+            </article>
+
+            <article class="slide">
+              <img src="images/photo4.jpg" alt="memory 4" />
+              <p>v day!! alw acting nonch ahhhhhh</p>
+            </article>
+
+            <article class="slide">
+              <img src="images/photo5.jpg" alt="memory 5" />
+              <p>alw wanted to be there when ure stressed w sch</p>
+            </article>
+
+            <article class="slide">
+              <img src="images/photo6.jpg" alt="memory 6" />
+              <p>cutest photobooth pics evaaa</p>
+            </article>
+          </div>
+        </div>
+
+        <button class="carousel-nav" id="nextSlide" aria-label="next photo">›</button>
+      </div>
+
+      <div class="carousel-dots" id="carouselDots"></div>
+    </section>
+
+    <section class="memory-cards glass">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">tap to flip. remove cursor from card to see the text</p>
+          <h2>fun facts about kikimang07</h2>
+        </div>
+      </div>
+
+      <div class="flip-grid">
+        <button class="flip-card">
+          <span class="flip-card-inner">
+            <span class="flip-front">first thing i think when i see you</span>
+            <span class="flip-back">how are you this pretty like actually</span>
+          </span>
+        </button>
+
+        <button class="flip-card">
+          <span class="flip-card-inner">
+            <span class="flip-front">your superpower</span>
+            <span class="flip-back">making every day feel softer and better</span>
+          </span>
+        </button>
+
+        <button class="flip-card">
+          <span class="flip-card-inner">
+            <span class="flip-front">my favorite place</span>
+            <span class="flip-back">wherever you are obv</span>
+          </span>
+        </button>
+
+        <button class="flip-card">
+          <span class="flip-card-inner">
+            <span class="flip-front">how long will you be my girl</span>
+            <span class="flip-back">FOREVERRRRRRRRRRRR</span>
+          </span>
+        </button>
+      </div>
+    </section>
+
+    <section class="lyrics-meaning-card glass">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">the song part</p>
+          <h2>why these lines remind me of you</h2>
+        </div>
+      </div>
+
+      <p class="section-copy">
+        not the whole lyrics,, just the parts that feel the most like you.
+      </p>
+
+      <div class="lyrics-grid">
+        <article class="lyric-note-card">
+          <p class="quoted-line">"in the car, cruising around with you"</p>
+          <p class="lyric-explain">
+            this feels like your vibe because even the smallest moments with you feel special. nothing huge has to happen. just being with you already feels good.
+          </p>
+        </article>
+
+        <article class="lyric-note-card">
+          <p class="quoted-line">"not in a hurry, there's something about you"</p>
+          <p class="lyric-explain">
+            this is so you because you make time feel softer. when it's you, there is no rush. i just want to stay in the moment longer.
+          </p>
+        </article>
+
+        <article class="lyric-note-card">
+          <p class="quoted-line">"she looks just like a dream"</p>
+          <p class="lyric-explain">
+            sometimes you genuinely look unreal to me, like how did i manage to get a perfect gf like u?!?!?
+          </p>
+        </article>
+
+        <article class="lyric-note-card">
+          <p class="quoted-line">"the prettiest girl i've ever seen"</p>
+          <p class="lyric-explain">
+            because yes. literally yes. no extra explanation needed actually.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="surprise-card-section glass">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">extra because you deserve extra</p>
+          <h2>tap the little surprises</h2>
+        </div>
+      </div>
+
+      <div class="surprise-grid">
+        <button class="surprise-box" data-message="you are literally so so pretty">tap me</button>
+        <button class="surprise-box" data-message="you make normal days feel special">tap me too</button>
+        <button class="surprise-box" data-message="i would choose you every time">this one</button>
+        <button class="surprise-box" data-message="you make me feel so lucky, u are the best gf i can ask for love">last one fr</button>
+      </div>
+
+      <p class="opened-total" id="openedTotal">cute surprises opened: 0</p>
+    </section>
+
+    <section class="reasons-card glass">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">random but true</p>
+          <h2>reasons i love you</h2>
+        </div>
+      </div>
+
+      <div class="reason-box" id="reasonBox">
+        your smile changes the entire mood of my day
+      </div>
+
+      <div class="reason-actions">
+        <button class="pill-btn yes-btn" id="newReasonBtn">give me another one</button>
+      </div>
+    </section>
+
+    <section class="mini-game glass">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">js a game for the birthday girl</p>
+          <h2>spin the birthday gift muahaha</h2>
+        </div>
+        <div class="game-score" id="gameScore">d09 penthouse guaranteed in 15 yrs</div>
+      </div>
+
+      <p class="section-copy">
+        press the button and let luck pick kiki's gift
+      </p>
+
+      <div class="game-area mood-game" id="gameArea">
+        <div class="mood-wheel" id="moodWheel">♡</div>
+        <p class="mood-result" id="moodResult">tap spin for gift</p>
+        <button class="game-start" id="gameStartBtn">spin</button>
+      </div>
+    </section>
+
+    <section class="message-card glass">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">to end it off...</p>
+          <h2>to my love that i hope to have forever...</h2>
+        </div>
+      </div>
+
+      <p class="message-text">
+        happy birthday, baby. i hope this year gives you more peace, more joy,
+        more laughter, more confidence, and more reasons to smile. thank you for
+        being exactly who you are. you make my world warmer just by being in it.
+      </p>
+    </section>
+  </main>
+
+  <div class="modal hidden" id="letterModal" aria-hidden="true">
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="modal-card">
+      <button class="modal-close" id="closeModal" aria-label="close love letter">×</button>
+      <p class="modal-kicker">to my kiki ♡</p>
+      <h3>a little love letter</h3>
+      <div class="modal-body">
+        <p>
+          happy birthday, my pretty girl. i just need you to know how loved you are.
+          you have this way of making everything feel lighter and sweeter and more alive.
+        </p>
+        <p>
+          i love your smile. i love your voice. i love your energy. i love the way
+          you make ordinary moments feel special without even trying.
+        </p>
+        <p>
+          i hope today makes you feel celebrated, spoiled, adored, and so so loved,
+          because i just have so much love to give you.
+        </p>
+        <p>
+          with love,<br />
+          your ashy, your person ♡
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="easter-egg hidden" id="easterEgg">
+    <div class="easter-card">
+      <p>easter egg!!!!!!</p>
+      <h3>you are my favorite notification, favorite face, favorite everything.</h3>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
