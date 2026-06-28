@@ -22,6 +22,8 @@
 * {
   box-sizing: border-box;
   cursor: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
 }
 
 html {
@@ -38,6 +40,8 @@ body {
     radial-gradient(circle at 88% 18%, rgba(255, 255, 255, 0.22), transparent 20%),
     linear-gradient(135deg, var(--bg-1), var(--bg-2), var(--bg-3));
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 button,
@@ -46,6 +50,8 @@ input,
 textarea {
   cursor: none;
   font: inherit;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 img {
@@ -166,6 +172,7 @@ h3,
   gap: 12px;
   margin-top: 22px;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .intro-input-row input {
@@ -176,6 +183,9 @@ h3,
   background: rgba(255, 255, 255, 0.22);
   color: var(--white);
   outline: none;
+  font-size: 16px;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .intro-input-row input::placeholder {
@@ -393,6 +403,36 @@ h3,
   font-weight: 700;
   transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
   box-shadow: 0 14px 30px rgba(255, 79, 143, 0.14);
+  position: relative;
+  overflow: hidden;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.pill-btn::before,
+.soft-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pill-btn:active::before,
+.soft-btn:active::before {
+  animation: glowPulse 0.6s ease-out;
+}
+
+@keyframes glowPulse {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
 }
 
 .pill-btn:hover,
@@ -403,6 +443,18 @@ h3,
 .modal-close:hover,
 .game-start:hover {
   transform: translateY(-2px) scale(1.03);
+}
+
+@media (hover: none) {
+  .pill-btn:active,
+  .soft-btn:active,
+  .ghost-chip:active,
+  .carousel-nav:active,
+  .dot:active,
+  .modal-close:active,
+  .game-start:active {
+    transform: translateY(-4px) scale(1.08);
+  }
 }
 
 .yes-btn {
@@ -456,6 +508,7 @@ h3,
   justify-content: space-between;
   gap: 16px;
   align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 .song-meta {
@@ -599,6 +652,7 @@ h3,
   border-radius: 999px;
   box-shadow: 0 14px 28px rgba(255, 79, 143, 0.14);
   font-size: 1.8rem;
+  flex-shrink: 0;
 }
 
 .carousel-dots {
@@ -616,6 +670,7 @@ h3,
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.44);
   transition: transform 0.2s ease, background 0.2s ease;
+  flex-shrink: 0;
 }
 
 .dot.active {
@@ -635,19 +690,25 @@ h3,
   background: transparent;
   perspective: 1000px;
   min-height: 180px;
+  padding: 0;
+  position: relative;
+  -webkit-perspective: 1000px;
 }
 
 .flip-card-inner {
   position: relative;
   display: block;
   width: 100%;
-  height: 180px;
+  height: 100%;
+  min-height: 180px;
   transform-style: preserve-3d;
   transition: transform 0.5s ease;
+  -webkit-transform-style: preserve-3d;
 }
 
 .flip-card.flipped .flip-card-inner {
   transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
 }
 
 .flip-front,
@@ -661,15 +722,36 @@ h3,
   justify-content: center;
   text-align: center;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   background: rgba(255, 255, 255, 0.18);
   color: var(--white);
   font-family: "Fredoka", sans-serif;
   line-height: 1.5;
+  font-size: 1.05rem;
+  overflow: hidden;
+  word-wrap: break-word;
 }
 
 .flip-back {
   transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
   background: rgba(255, 255, 255, 0.26);
+}
+
+@media (hover: hover) {
+  .flip-card:hover .flip-front,
+  .flip-card:hover .flip-back {
+    transform: translateY(-4px) scale(1.02);
+    -webkit-transform: translateY(-4px) scale(1.02);
+    background: rgba(255, 255, 255, 0.28);
+  }
+}
+
+@media (hover: none) {
+  .flip-card:active .flip-front,
+  .flip-card:active .flip-back {
+    background: rgba(255, 255, 255, 0.28);
+  }
 }
 
 .lyrics-grid {
@@ -683,6 +765,12 @@ h3,
   padding: 20px;
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.18);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.lyric-note-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  background: rgba(255, 255, 255, 0.26);
 }
 
 .quoted-line {
@@ -713,13 +801,28 @@ h3,
   font-family: "Fredoka", sans-serif;
   font-size: 1rem;
   transition: transform 0.2s ease, background 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-.surprise-box:hover,
-.flip-card:hover .flip-front,
-.flip-card:hover .flip-back,
-.reason-box:hover,
-.lyric-note-card:hover {
+.surprise-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.surprise-box:active::before {
+  animation: glowPulse 0.6s ease-out;
+}
+
+.surprise-box:hover {
   transform: translateY(-4px) scale(1.02);
   background: rgba(255, 255, 255, 0.26);
 }
@@ -739,6 +842,11 @@ h3,
   font-size: 1.2rem;
   text-align: center;
   transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.reason-box:hover {
+  transform: translateY(-4px) scale(1.02);
+  background: rgba(255, 255, 255, 0.26);
 }
 
 .reason-actions {
@@ -858,6 +966,21 @@ h3,
   background: #ffe0ec;
   color: #d94a82;
   font-size: 1.6rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.modal-close::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal-close:active::before {
+  animation: glowPulse 0.6s ease-out;
 }
 
 .cursor-hearts {
@@ -872,6 +995,25 @@ h3,
   pointer-events: none;
   font-size: 16px;
   animation: cursorFloat 0.9s ease-out forwards;
+}
+
+.emoji-burst {
+  position: fixed;
+  pointer-events: none;
+  font-size: 28px;
+  animation: emojiBurst 0.8s ease-out forwards;
+  z-index: 150;
+}
+
+@keyframes emojiBurst {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -120px) scale(1.8) rotate(20deg);
+  }
 }
 
 .star,
@@ -999,24 +1141,14 @@ h3,
 }
 
 @media (max-width: 760px) {
-  * {
-    cursor: auto;
-  }
-
-  button,
-  a,
-  input,
-  textarea {
-    cursor: pointer;
-  }
-
-  .cursor-hearts {
-    display: none;
+  body {
+    padding: 0;
+    margin: 0;
   }
 
   .site-shell {
-    width: min(100% - 14px, 100%);
-    padding: 14px 0 22px;
+    width: calc(100% - 20px);
+    padding: 20px 0 32px;
   }
 
   .hero-card,
@@ -1027,114 +1159,303 @@ h3,
   .reasons-card,
   .mini-game,
   .message-card {
+    border-radius: 24px;
     padding: 20px;
-    border-radius: 26px;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
   }
 
   .hero-card {
-    min-height: auto;
-    padding-top: 80px;
-    padding-bottom: 28px;
+    min-height: 100vh;
+    padding: 20px;
   }
 
-  .intro-card {
-    padding: 22px 18px;
-    border-radius: 24px;
+  #mainTitle {
+    font-size: clamp(2rem, 6vw, 3.5rem);
   }
 
-  .intro-input-row {
+  .hero-topline {
     flex-direction: column;
+    gap: 12px;
   }
 
-  .hero-topline,
-  .song-top,
-  .section-heading {
-    flex-direction: column;
-    align-items: flex-start;
+  .hero-badge,
+  .ghost-chip,
+  .section-pill,
+  .now-playing {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-copy {
+    font-size: 1rem;
   }
 
   .hero-actions {
     flex-direction: column;
+    min-height: auto;
+    gap: 10px;
+  }
+
+  .pill-btn,
+  .soft-btn {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 0.95rem;
+  }
+
+  .song-panel {
+    padding: 16px;
+    margin: 18px auto 0;
+  }
+
+  .song-top {
+    flex-direction: column;
+    align-items: center;
   }
 
   .song-meta {
-    align-items: flex-start;
+    flex-direction: column;
+    text-align: center;
   }
 
-  .carousel-wrap {
-    grid-template-columns: 1fr;
-    gap: 12px;
+  .player-controls {
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .player-controls .soft-btn {
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    flex: 0 1 auto;
   }
 
   .carousel-nav {
-    display: none;
+    width: 44px;
+    height: 44px;
+    font-size: 1.5rem;
+  }
+
+  .section-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .section-pill {
+    align-self: flex-start;
+  }
+
+  .flip-grid,
+  .surprise-grid,
+  .lyrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .flip-card {
+    min-height: 140px;
+  }
+
+  .flip-front,
+  .flip-back {
+    min-height: 140px;
+    padding: 14px;
+    font-size: 0.95rem;
+  }
+
+  .surprise-box {
+    min-height: 100px;
+    font-size: 0.9rem;
+    padding: 12px;
+  }
+
+  .reason-box {
+    padding: 16px;
+    font-size: 1.1rem;
+  }
+
+  .game-area {
+    min-height: 280px;
+  }
+
+  .mood-wheel {
+    width: 120px;
+    height: 120px;
+    font-size: 2.4rem;
+  }
+
+  .mood-result {
+    font-size: 0.95rem;
+    max-width: 100%;
+  }
+
+  .intro-card {
+    padding: 20px;
+    border-radius: 24px;
+  }
+
+  .intro-title {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+  }
+
+  .intro-input-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .intro-input-row input,
+  .intro-input-row .pill-btn {
+    width: 100%;
+  }
+
+  .modal-card {
+    width: calc(100% - 20px);
+    padding: 20px;
+    border-radius: 24px;
+  }
+
+  .modal-close {
+    width: 36px;
+    height: 36px;
+    font-size: 1.4rem;
+    top: 12px;
+    right: 12px;
+  }
+
+  .song-cover {
+    width: 80px;
+    height: 80px;
   }
 
   .slide img {
-    height: 360px;
+    height: 320px;
+  }
+
+  .lyric-note-card {
+    padding: 14px;
+  }
+
+  .quoted-line {
+    font-size: 0.95rem;
+  }
+
+  .lyric-explain {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-shell {
+    width: calc(100% - 16px);
+  }
+
+  .hero-card,
+  .carousel-card,
+  .memory-cards,
+  .lyrics-meaning-card,
+  .surprise-card-section,
+  .reasons-card,
+  .mini-game,
+  .message-card {
+    border-radius: 20px;
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+
+  #mainTitle {
+    font-size: clamp(1.6rem, 5vw, 2.8rem);
   }
 
   .flip-grid,
   .surprise-grid,
   .lyrics-grid {
     grid-template-columns: 1fr;
+    gap: 10px;
   }
 
-  .player-controls {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  .flip-card {
+    min-height: 120px;
   }
 
-  .soft-btn:last-child {
-    grid-column: 1 / -1;
-  }
-
-  .modal-card {
-    padding: 22px 18px;
-    border-radius: 24px;
-  }
-
-  .game-area {
-    min-height: 280px;
-  }
-}
-
-@media (max-width: 480px) {
-  #mainTitle,
-  .intro-title {
-    font-size: 2.9rem;
-  }
-
-  .hero-copy,
-  .song-subcopy,
-  .section-copy,
-  .message-text,
-  .yes-copy,
-  .modal-body p,
-  .intro-copy,
-  .lyric-explain {
-    font-size: 0.98rem;
-  }
-
-  .slide img {
-    height: 300px;
+  .flip-front,
+  .flip-back {
+    min-height: 120px;
+    font-size: 0.9rem;
+    padding: 12px;
   }
 
   .pill-btn,
-  .soft-btn,
-  .surprise-box,
-  .ghost-chip,
-  .game-start {
-    width: 100%;
+  .soft-btn {
+    padding: 10px 14px;
+    font-size: 0.9rem;
   }
 
-  .song-meta {
-    flex-direction: column;
+  .section-heading {
+    gap: 8px;
+  }
+
+  .song-panel {
+    padding: 12px;
+  }
+
+  .player-controls {
+    gap: 6px;
+  }
+
+  .player-controls .soft-btn {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+
+  .surprise-box {
+    min-height: 90px;
+    font-size: 0.85rem;
+    padding: 10px;
+  }
+
+  .reason-box {
+    padding: 14px;
+    font-size: 1rem;
+  }
+
+  .mood-wheel {
+    width: 100px;
+    height: 100px;
+    font-size: 2rem;
+  }
+
+  .carousel-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+  }
+
+  .slide img {
+    height: 260px;
+  }
+
+  .intro-copy {
+    font-size: 0.95rem;
+  }
+
+  .modal-card {
+    padding: 16px;
+  }
+
+  .modal-body p {
+    margin: 0 0 12px;
+    font-size: 0.95rem;
   }
 
   .song-cover {
-    width: 100%;
-    height: 220px;
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@supports (padding: max(0px)) {
+  body {
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
   }
 }
