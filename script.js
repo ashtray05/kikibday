@@ -18,6 +18,7 @@ const restartBtn = document.getElementById("restartBtn");
 const letterBtn = document.getElementById("letterBtn");
 const secretLetterChip = document.getElementById("secretLetterChip");
 const song = document.getElementById("song");
+const spinSfx = document.getElementById("spinSfx");
 const progressFill = document.getElementById("progressFill");
 
 const lyricMain = document.getElementById("lyricMain");
@@ -349,14 +350,17 @@ function startGame() {
   moodSpinning = true;
   gameStartBtn.textContent = "spinning...";
   moodWheel.style.transform = "rotate(1080deg)";
+  
+  spinSfx.currentTime = 0;
+  spinSfx.play().catch(() => {});
 
   setTimeout(() => {
     const pickedMood = moods[Math.floor(Math.random() * moods.length)];
     moodResult.textContent = pickedMood;
     gameScore.textContent = "mood: selected";
-    gameStartBtn.textContent = "spin again";
     moodWheel.style.transform = "rotate(0deg)";
     moodSpinning = false;
+    gameStartBtn.textContent = "spin again";
   }, 1100);
 }
 
